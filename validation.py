@@ -52,4 +52,4 @@ for test in validation:
 
 print "passed:", passed
 print "failed:", failed
-print "rate: %d%%" % (passed * 100 / len(validation))
+print "rate: %f%%" % (float(passed) * 100 / len(validation))

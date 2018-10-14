@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 
 import random
+import re
 
-to_remove = ["the", "a", "of", ":", ".", "!", "-"]
+to_remove = ["the", "a"]
 
 random.seed()
 
 with open("./dataset/SMSSpamCollection") as f:
     dataset = f.readlines()
 
-dataset = set(map(lambda x: ",".join(filter(lambda x: x not in to_remove, x.replace(",", "").strip().split())), dataset))
+dataset = set(map(lambda x: ",".join(filter(lambda x: x not in to_remove, re.sub("[^ \t\w\d]+", "", x.strip().lower()).split())), dataset))
 
 validation = random.sample(dataset, len(dataset) / 3)
 training = dataset.difference(validation)
