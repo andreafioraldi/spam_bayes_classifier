@@ -125,16 +125,17 @@ public:
         }
     }
     
-    string savePcCSV(const string& filename)
+    void savePcCSV(const string& filename)
     {
         ofstream ofs(filename, ofstream::out);
         for(auto& c : this->C) {
-            ofs << c << "," << this->Pc[c] << endl;
+            ofs << c;
+            ofs << "," << this->Pc[c] << endl;
         }
         ofs.close();
     }
     
-    string savePwcCSV(const string& filename)
+    void savePwcCSV(const string& filename)
     {
         ofstream ofs(filename, ofstream::out);
         for(auto& p : this->Pwc) {
